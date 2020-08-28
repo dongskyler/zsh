@@ -97,7 +97,7 @@ source "$ZSH/oh-my-zsh.sh"
 # export ARCHFLAGS="-arch x86_64"
 
 # Import aliases
-source "$HOME/.zsh-alias"
+source "$HOME/.zsh/.zsh-alias"
 
 # GPG key
 export GPG_TTY=$(tty)
