@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.zsh/presets/oh-my-zsh"
 
-ZSH_THEME="bira"
+ZSH_THEME="avit"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -58,6 +58,7 @@ export UPDATE_ZSH_DAYS=21
 plugins=(
   autojump
   git
+  vi-mode
   yarn
 )
 
@@ -134,3 +135,4 @@ load_nvm () {
 for cmd in "${NODE_GLOBALS[@]}"; do
     eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
 done
+
