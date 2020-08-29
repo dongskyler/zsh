@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.zsh/presets/oh-my-zsh"
 
-ZSH_THEME="avit"
+ZSH_THEME="spaceship"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -64,12 +64,15 @@ plugins=(
 
 source "$ZSH/oh-my-zsh.sh"
 
+source "$HOME/.zsh/spaceship-config.zsh"
+
 # Regenerate .zcompdump at most once a day
 autoload -Uz compinit
 for dump in ~/.zcompdump(N.mh+24); do
   compinit
 done
 compinit -C
+
 
 # Additional plugins
 
