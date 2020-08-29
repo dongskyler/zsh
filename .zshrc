@@ -130,15 +130,17 @@ fi
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # Node version manager (NVM)
-export NVM_DIR="$HOME/.nvm"
-export NVM_SH_DIR=/usr/local/opt/nvm
-declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-NODE_GLOBALS+=("node")
-NODE_GLOBALS+=("nvm")
-load_nvm () {
-    [ -s "$NVM_SH_DIR/nvm.sh" ] && . "$NVM_SH_DIR/nvm.sh"
-}
-for cmd in "${NODE_GLOBALS[@]}"; do
-    eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
-done
+if command -v nvm &> /dev/null; then
+  export NVM_DIR="$HOME/.nvm"
+  export NVM_SH_DIR=/usr/local/opt/nvm
+  declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+  NODE_GLOBALS+=("node")
+  NODE_GLOBALS+=("nvm")
+  load_nvm () {
+      [ -s "$NVM_SH_DIR/nvm.sh" ] && . "$NVM_SH_DIR/nvm.sh"
+  }
+  for cmd in "${NODE_GLOBALS[@]}"; do
+      eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
+  done
+fi
 
