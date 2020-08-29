@@ -110,17 +110,21 @@ export PATH="/usr/local/sbin:$PATH"
 export GPG_TTY=$(tty)
 
 # rbenv (Ruby)
-if which rbenv > /dev/null; then
-  eval "$(rbenv init -)";
+if command -v rbenv &> /dev/null; then
+  if which rbenv > /dev/null; then
+    eval "$(rbenv init -)";
+  fi
 fi
 
 # pyenv (Python)
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+if command -v pyenv &> /dev/null; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+  fi
+  eval "$(pyenv virtualenv-init -)"
 fi
-eval "$(pyenv virtualenv-init -)"
 
 # poetry (Python)
 export PATH="$HOME/.poetry/bin:$PATH"
