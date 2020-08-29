@@ -4,6 +4,3 @@
 [submodule "plugins/zsh-autosuggestions"]
 	path = plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule "presets/oh-my-zsh"]
-	path = presets/oh-my-zsh
-	url = git@github.com:dongskyler/ohmyzsh.git
