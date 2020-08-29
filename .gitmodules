@@ -1,0 +1,9 @@
+[submodule "presets/oh-my-zsh"]
+	path = presets/oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "plugins/zsh-syntax-highlighting"]
+	path = plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "plugins/zsh-autosuggestions"]
+	path = plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
