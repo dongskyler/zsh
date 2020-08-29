@@ -127,7 +127,9 @@ if command -v pyenv &> /dev/null; then
 fi
 
 # poetry (Python)
-export PATH="$HOME/.poetry/bin:$PATH"
+if command -v poetry &> /dev/null; then
+  export PATH="$HOME/.poetry/bin:$PATH"
+fi
 
 # Node version manager (NVM)
 if command -v nvm &> /dev/null; then
