@@ -48,7 +48,7 @@ export UPDATE_ZSH_DAYS=21
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+# ZSH_CUSTOM="$HOME/.zsh/custom"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -76,14 +76,14 @@ compinit -C
 # Additional plugins
 
 # Zsh-autosuggestions
-ZSH_AUTOSUGGEST_USE_ASYNC="true"
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_STRATEGY="history completion"
-ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
-source "$HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# ZSH_AUTOSUGGEST_USE_ASYNC="true"
+# ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+# ZSH_AUTOSUGGEST_STRATEGY="history completion"
+# ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
+# source "$HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Zsh-syntax-highlighting
-source "$HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# source "$HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -109,6 +109,21 @@ export PATH="/usr/local/sbin:$PATH"
 # GPG key
 export GPG_TTY=$(tty)
 
+# Node version manager (NVM)
+if command -v nvm &> /dev/null; then
+  export NVM_DIR="$HOME/.nvm"
+  export NVM_SH_DIR=/usr/local/opt/nvm
+  declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
+  NODE_GLOBALS+=("node")
+  NODE_GLOBALS+=("nvm")
+  load_nvm () {
+      [ -s "$NVM_SH_DIR/nvm.sh" ] && . "$NVM_SH_DIR/nvm.sh"
+  }
+  for cmd in "${NODE_GLOBALS[@]}"; do
+      eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
+  done
+fi
+
 # rbenv (Ruby)
 if command -v rbenv &> /dev/null; then
   if which rbenv > /dev/null; then
@@ -129,20 +144,5 @@ fi
 # poetry (Python)
 if command -v poetry &> /dev/null; then
   export PATH="$HOME/.poetry/bin:$PATH"
-fi
-
-# Node version manager (NVM)
-if command -v nvm &> /dev/null; then
-  export NVM_DIR="$HOME/.nvm"
-  export NVM_SH_DIR=/usr/local/opt/nvm
-  declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-  NODE_GLOBALS+=("node")
-  NODE_GLOBALS+=("nvm")
-  load_nvm () {
-      [ -s "$NVM_SH_DIR/nvm.sh" ] && . "$NVM_SH_DIR/nvm.sh"
-  }
-  for cmd in "${NODE_GLOBALS[@]}"; do
-      eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
-  done
 fi
 
