@@ -42,3 +42,6 @@ alias po=poetry
 alias p3=python3
 
 alias v=nvim
+
+alias yf="yarn format"
+

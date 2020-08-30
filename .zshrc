@@ -11,7 +11,7 @@ ZSH_THEME="spaceship"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-export DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -48,7 +48,13 @@ export UPDATE_ZSH_DAYS=21
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-export ZSH_CUSTOM="$HOME/.zsh/custom"
+ZSH_CUSTOM="$HOME/.zsh/custom"
+
+# Zsh-autosuggestions
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_STRATEGY="history completion"
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
@@ -56,6 +62,7 @@ export ZSH_CUSTOM="$HOME/.zsh/custom"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  autojump
   git
   vi-mode
   yarn
@@ -74,19 +81,6 @@ for dump in ~/.zcompdump(N.mh+24); do
 done
 compinit -C
 
-
-# Additional plugins
-
-# Zsh-autosuggestions
-# ZSH_AUTOSUGGEST_USE_ASYNC="true"
-# ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-# ZSH_AUTOSUGGEST_STRATEGY="history completion"
-# ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
-# source "$HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
-# Zsh-syntax-highlighting
-# source "$HOME/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -103,7 +97,7 @@ export LANG=en_US.UTF-8
 # export ARCHFLAGS="-arch x86_64"
 
 # Import aliases
-source "$HOME/.zsh/.zsh-alias"
+source "$HOME/.zsh/aliases.zsh"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
