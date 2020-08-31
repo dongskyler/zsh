@@ -1,7 +1,15 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.zsh/presets/oh-my-zsh"
+#!/bin/zsh
 
-ZSH_THEME="spaceship"
+# Set your language environment
+export LANG=en_US.UTF-8
+
+# export MANPATH="/usr/local/man:$MANPATH"
+ZDOTDIR="$HOME/.zsh"
+ZSH_COMPDUMP="$ZDOTDIR/.zcompdump"
+ALIASES_FILE="$ZDOTDIR/aliases.zsh"
+export ZSH="$ZDOTDIR/presets/oh-my-zsh"
+export ZSH_THEME="spaceship"
+THEME_CONFIG="$ZDOTDIR/spaceship-config.zsh"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -11,7 +19,7 @@ ZSH_THEME="spaceship"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+export DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
@@ -48,19 +56,15 @@ export UPDATE_ZSH_DAYS=21
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-ZSH_CUSTOM="$HOME/.zsh/custom"
+export ZSH_CUSTOM="$ZDOTDIR/custom"
 
-# Zsh-autosuggestions
+# Zsh-autosuggestions configurations
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_STRATEGY="history completion"
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
   autojump
   git
@@ -70,34 +74,46 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source "$ZSH/oh-my-zsh.sh"
+export NVM_DIR="$HOME/.nvm"
+export NVM_SH_DIR=/usr/local/opt/nvm # This location may vary on different machines
 
-source "$HOME/.zsh/spaceship-config.zsh"
+export PYENV_ROOT="$HOME/.pyenv"
+
+# ----------------------------------------------------------------------
+# Local configuration file to override default environmental variables
+LOCAL_BYPASS_CONFIG="$ZDOTFILE/local-config.zsh"
+[[ -f "$LOCAL_BYPASS_CONFIG" ]] && . "$LOCAL_BYPASS_CONFIG"
+
+# DO NOT define environmental variables below this line
+# ----------------------------------------------------------------------
+
+# Path to your oh-my-zsh installation.
+if [[ -d "$ZSH" ]]; then
+  . "$ZSH/oh-my-zsh.sh"
+else
+  echo "Error: oh-my-zsh does not exist."
+fi
+
+# Load theme configurations
+[[ -f "$THEME_CONFIG" ]] && . "$THEME_CONFIG"
 
 # Regenerate .zcompdump at most once a day
 autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
-  compinit
-done
-compinit -C
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
+if [[ -n "$ZDOTDIR"/.zcompdump(#qN.mh+24) ]]; then
+  compinit -d "$ZSH_COMPDUMP"
+else
+  compinit -C
+fi
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# Import aliases
-source "$HOME/.zsh/aliases.zsh"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -107,8 +123,6 @@ export GPG_TTY=$(tty)
 
 # Node version manager (NVM)
 if command -v nvm &> /dev/null; then
-  export NVM_DIR="$HOME/.nvm"
-  export NVM_SH_DIR=/usr/local/opt/nvm
   declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
   NODE_GLOBALS+=("node")
   NODE_GLOBALS+=("nvm")
@@ -129,7 +143,6 @@ fi
 
 # pyenv (Python)
 if command -v pyenv &> /dev/null; then
-  export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
@@ -141,4 +154,7 @@ fi
 if command -v poetry &> /dev/null; then
   export PATH="$HOME/.poetry/bin:$PATH"
 fi
+
+# Import aliases
+[[ -f "$ALIASES_FILE" ]] && . "$ALIASES_FILE"
 

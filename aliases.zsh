@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Aliases
 
 alias a=apt
@@ -34,12 +36,18 @@ alias k=kubectl
 
 alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nojvm -nodisplay -nosplash'
 
+alias n=node
+
 alias s=jobs
 
 alias p=python
 alias pe=pyenv
+alias pea="pyenv activate"
+alias ped="pyenv deactivate"
 alias po=poetry
 alias p3=python3
+
+alias tn=ts-node
 
 alias v=nvim
 

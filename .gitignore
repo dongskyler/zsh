@@ -1,3 +1,7 @@
+# Zsh
+.zcompdump*
+local-config.zsh
+
 # General
 .DS_Store
 .AppleDouble
