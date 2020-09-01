@@ -1,14 +1,10 @@
 #!/bin/zsh
 
-# Set your language environment
-export LANG=en_US.UTF-8
+zmodload zsh/zprof
 
-# export MANPATH="/usr/local/man:$MANPATH"
-ZDOTDIR="$HOME/.zsh"
-ZSH_COMPDUMP="$ZDOTDIR/.zcompdump"
 ALIASES_FILE="$ZDOTDIR/aliases.zsh"
-export ZSH="$ZDOTDIR/presets/oh-my-zsh"
-export ZSH_THEME="spaceship"
+ZSH="$ZDOTDIR/presets/oh-my-zsh"
+ZSH_THEME="spaceship"
 THEME_CONFIG="$ZDOTDIR/spaceship-config.zsh"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -19,13 +15,13 @@ THEME_CONFIG="$ZDOTDIR/spaceship-config.zsh"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-export DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=21
+UPDATE_ZSH_DAYS=21
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
@@ -56,7 +52,9 @@ export UPDATE_ZSH_DAYS=21
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-export ZSH_CUSTOM="$ZDOTDIR/custom"
+ZSH_CUSTOM="$ZDOTDIR/custom"
+
+ZSH_COMPDUMP="$ZDOTDIR/.zcompdump"
 
 # Zsh-autosuggestions configurations
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
@@ -64,7 +62,7 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_STRATEGY="history completion"
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
 
-# Which plugins would you like to load?
+# Plugins to be loaded with oh-my-zsh
 plugins=(
   autojump
   git
@@ -74,18 +72,9 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-export NVM_DIR="$HOME/.nvm"
-export NVM_SH_DIR=/usr/local/opt/nvm # This location may vary on different machines
-
-export PYENV_ROOT="$HOME/.pyenv"
-
-# ----------------------------------------------------------------------
-# Local configuration file to override default environmental variables
-LOCAL_BYPASS_CONFIG="$ZDOTFILE/local-config.zsh"
-[[ -f "$LOCAL_BYPASS_CONFIG" ]] && . "$LOCAL_BYPASS_CONFIG"
-
-# DO NOT define environmental variables below this line
-# ----------------------------------------------------------------------
+# Load autojump if installed manually
+[[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] && . "$HOME/.autojump/etc/profile.d/autojump.sh"
+# autoload -U compinit && compinit -u
 
 # Path to your oh-my-zsh installation.
 if [[ -d "$ZSH" ]]; then
@@ -96,30 +85,6 @@ fi
 
 # Load theme configurations
 [[ -f "$THEME_CONFIG" ]] && . "$THEME_CONFIG"
-
-# Regenerate .zcompdump at most once a day
-autoload -Uz compinit
-if [[ -n "$ZDOTDIR"/.zcompdump(#qN.mh+24) ]]; then
-  compinit -d "$ZSH_COMPDUMP"
-else
-  compinit -C
-fi
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-
-# GPG key
-export GPG_TTY=$(tty)
 
 # Node version manager (NVM)
 if command -v nvm &> /dev/null; then
@@ -158,3 +123,4 @@ fi
 # Import aliases
 [[ -f "$ALIASES_FILE" ]] && . "$ALIASES_FILE"
 
+zprof

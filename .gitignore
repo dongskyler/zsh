@@ -1,6 +1,7 @@
 # Zsh
 .zcompdump*
 local-config.zsh
+.zsh_history
 
 # General
 .DS_Store
