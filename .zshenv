@@ -1,4 +1,4 @@
-echo "zshenv is loaded"
+#!/bin/zsh
 
 export ZDOTDIR="$HOME/.zsh"
 

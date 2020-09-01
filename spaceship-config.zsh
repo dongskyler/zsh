@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Configurations for theme Spaceship
 
 # Prompt order
