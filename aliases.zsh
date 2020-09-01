@@ -2,17 +2,25 @@
 
 # Aliases
 
-alias a=apt
 alias ag=apt-get
 
-alias b=brew
+alias b=bg
+alias br=brew
+alias b1="bg %1"
+alias b2="bg %2"
+alias b3="bg %3"
+alias b4="bg %4"
+alias b5="bg %5"
+alias b6="bg %6"
+alias b7="bg %7"
+alias b8="bg %8"
+alias b9="bg %9"
 
 alias c=code
 alias ci=code-insiders
 alias cls=clear
 
-alias dn=dnf
-alias dr=docker
+alias dk=docker
 
 alias f=fg
 alias f1="fg %1"
@@ -49,7 +57,17 @@ alias p3=python3
 
 alias tn=ts-node
 
-alias v=nvim
+# alias v=nvim
+assign_alias_v() {
+  if command -v nvim &> /dev/null; then
+    alias v=nvim
+  elif command -v vim &> /dev/null; then
+    alias v=vim
+  else
+    echo "FYI, neither Vim or Neovim is installed."
+  fi
+}
+assign_alias_v
 
 alias yf="yarn format"
 
