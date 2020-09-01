@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-zmodload zsh/zprof
-
 ALIASES_FILE="$ZDOTDIR/aliases.zsh"
 ZSH="$ZDOTDIR/presets/oh-my-zsh"
 ZSH_THEME="spaceship"
@@ -122,5 +120,3 @@ fi
 
 # Import aliases
 [[ -f "$ALIASES_FILE" ]] && . "$ALIASES_FILE"
-
-zprof
