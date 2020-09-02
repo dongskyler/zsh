@@ -15,18 +15,18 @@ else
   export EDITOR='nvim'
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-
-# export MANPATH="/usr/local/man:$MANPATH"
 
 export NVM_DIR="$HOME/.nvm"
 export NVM_SH_DIR=/usr/local/opt/nvm # This location may vary on different machines
 
 export PYENV_ROOT="$HOME/.pyenv"
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# export MANPATH="/usr/local/man:$MANPATH"
 
 # ----------------------------------------------------------------------
 # Local configuration file to override default environmental variables

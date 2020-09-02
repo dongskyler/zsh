@@ -71,26 +71,23 @@ plugins=(
 )
 
 # Load autojump if installed manually
-[[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] && . "$HOME/.autojump/etc/profile.d/autojump.sh"
+AUTOJUMP_SH="$HOME/.autojump/etc/profile.d/autojump.sh"
+[[ -s "$AUTOJUMP_SH" ]] && . "$AUTOJUMP_SH"
 # autoload -U compinit && compinit -u
 
 # Path to your oh-my-zsh installation.
-if [[ -d "$ZSH" ]]; then
-  . "$ZSH/oh-my-zsh.sh"
-else
-  echo "Error: oh-my-zsh does not exist."
-fi
+[[ -d "$ZSH" ]] && . "$ZSH/oh-my-zsh.sh"
 
 # Load theme configurations
 [[ -f "$THEME_CONFIG" ]] && . "$THEME_CONFIG"
 
 # Node version manager (NVM)
-if command -v nvm &> /dev/null; then
+if [[ -d "$NVM_SH_DIR" ]]; then
   declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
   NODE_GLOBALS+=("node")
   NODE_GLOBALS+=("nvm")
   load_nvm () {
-      [ -s "$NVM_SH_DIR/nvm.sh" ] && . "$NVM_SH_DIR/nvm.sh"
+      [[ -s "$NVM_SH_DIR/nvm.sh" ]] && . "$NVM_SH_DIR/nvm.sh"
   }
   for cmd in "${NODE_GLOBALS[@]}"; do
       eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
@@ -105,7 +102,7 @@ if command -v rbenv &> /dev/null; then
 fi
 
 # pyenv (Python)
-if command -v pyenv &> /dev/null; then
+if [[ -d $PYENV_ROOT  ]]; then
   export PATH="$PYENV_ROOT/bin:$PATH"
   if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
@@ -114,9 +111,8 @@ if command -v pyenv &> /dev/null; then
 fi
 
 # poetry (Python)
-if command -v poetry &> /dev/null; then
-  export PATH="$HOME/.poetry/bin:$PATH"
-fi
+[[ -d "$HOME"/.poetry ]] && export PATH="$HOME/.poetry/bin:$PATH"
 
 # Import aliases
 [[ -f "$ALIASES_FILE" ]] && . "$ALIASES_FILE"
+
