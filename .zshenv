@@ -22,6 +22,7 @@ export NVM_DIR="$HOME/.nvm"
 export NVM_SH_DIR=/usr/local/opt/nvm # This location may vary on different machines
 
 export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

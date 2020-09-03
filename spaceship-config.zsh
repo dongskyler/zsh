@@ -6,8 +6,8 @@
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stamps section
   user          # Username section
-  dir           # Current directory section
   host          # Hostname section
+  dir           # Current directory section
   git           # Git section (git_branch + git_status)
   # hg            # Mercurial section (hg_branch  + hg_status)
   package       # Package version
@@ -22,8 +22,8 @@ SPACESHIP_PROMPT_ORDER=(
   haskell       # Haskell Stack section
   # julia         # Julia section
   docker        # Docker section
-  aws           # Amazon Web Services section
-  gcloud        # Google Cloud Platform section
+  # aws           # Amazon Web Services section
+  # gcloud        # Google Cloud Platform section
   # venv          # virtualenv section
   # conda         # conda virtualenv section
   pyenv         # Pyenv section
