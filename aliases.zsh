@@ -2,6 +2,10 @@
 
 # Aliases
 
+alias ,='cd ..'
+alias @=ssh
+alias %=pwd
+
 alias ag=apt-get
 alias agi='apt-get install'
 alias agu='apt-get update'
@@ -37,6 +41,7 @@ alias cl=curl
 alias cls=clear
 
 alias dk=docker
+alias dn=dnf
 alias dni='dnf install'
 alias dnu='dnf update'
 alias dnug='dnf upgrade'
@@ -72,6 +77,7 @@ alias pi3i='pip3 install'
 alias po=poetry
 alias p3=python3
 
+alias -g S='| sort'
 alias s=jobs
 alias sc=systemctl
 alias scr='systemctl reload'
