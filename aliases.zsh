@@ -75,6 +75,9 @@ alias pii='pip install'
 alias pi3=pip3
 alias pi3i='pip3 install'
 alias po=poetry
+alias poi='poetry install'
+alias pou='poetry update'
+alias pox='poetry export -f requirements.txt > requirements.txt'
 alias p3=python3
 
 alias -g S='| sort'
