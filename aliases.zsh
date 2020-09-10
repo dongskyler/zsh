@@ -34,11 +34,12 @@ alias b8='bg %8'
 alias b9='bg %9'
 
 alias c=code
-alias cm=chmod
-alias co=chown
 alias ci=code-insiders
+alias cj=clojure
 alias cl=curl
 alias cls=clear
+alias cm=chmod
+alias co=chown
 
 alias dk=docker
 alias dn=dnf
@@ -60,6 +61,8 @@ alias f9='fg %9'
 alias gfu='git fetch upstream'
 
 alias k=kubectl
+
+alias le=lein
 
 alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nojvm -nodisplay -nosplash'
 
