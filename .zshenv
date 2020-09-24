@@ -2,24 +2,28 @@
 
 export ZDOTDIR="$HOME/.zsh"
 
-# Set your language environment
 export LANG=en_US.UTF-8
 
-# GPG key
 export GPG_TTY=$(tty)
 
-# Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR=vim
 else
-  export EDITOR='nvim'
+  export EDITOR=nvim
 fi
+
+export PAGER=less
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 export NVM_SH_DIR=/usr/local/opt/nvm # This location may vary on different machines
+
+# Java (OpenJDK)
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+# For Java compilers
+export CPPFLAGS="-I/usr/local/opt/openjdk/include"
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1

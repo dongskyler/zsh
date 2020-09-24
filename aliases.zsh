@@ -61,8 +61,19 @@ alias f9='fg %9'
 alias gfu='git fetch upstream'
 
 alias k=kubectl
+alias k1='kill %1'
+alias k2='kill %2'
+alias k3='kill %3'
+alias k4='kill %4'
+alias k5='kill %5'
+alias k6='kill %6'
+alias k7='kill %7'
+alias k8='kill %8'
+alias k9='kill %9'
 
-alias le=lein
+alias -g L='| less'
+alias le=less
+alias lg=lein
 
 alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nojvm -nodisplay -nosplash'
 
@@ -82,6 +93,8 @@ alias poi='poetry install'
 alias pou='poetry update'
 alias pox='poetry export -f requirements.txt > requirements.txt'
 alias p3=python3
+
+alias re=rbenv
 
 alias -g S='| sort'
 alias s=jobs
@@ -109,5 +122,5 @@ assign_alias_v
 
 alias wg=wget
 
+alias yc='yarn coverage'
 alias yf='yarn format'
-

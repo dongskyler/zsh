@@ -115,4 +115,3 @@ fi
 
 # Import aliases
 [[ -f "$ALIASES_FILE" ]] && . "$ALIASES_FILE"
-
