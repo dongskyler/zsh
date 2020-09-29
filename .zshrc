@@ -87,7 +87,8 @@ if [[ -d "$NVM_SH_DIR" ]]; then
   NODE_GLOBALS+=("node")
   NODE_GLOBALS+=("nvm")
   load_nvm () {
-      [[ -s "$NVM_SH_DIR/nvm.sh" ]] && . "$NVM_SH_DIR/nvm.sh"
+    [[ -s "$NVM_SH_DIR/nvm.sh" ]] && . "$NVM_SH_DIR/nvm.sh"
+    [[ -s "$NVM_SH_DIR/etc/bash_completion.d/nvm" ]] && . "$NVM_SH_DIR/etc/bash_completion.d/nvm"
   }
   for cmd in "${NODE_GLOBALS[@]}"; do
       eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
