@@ -34,7 +34,6 @@ alias b8='bg %8'
 alias b9='bg %9'
 
 alias c=code
-alias ci=code-insiders
 alias cj=clojure
 alias cl=curl
 alias cls=clear
@@ -76,8 +75,8 @@ alias le=less
 alias lg=lein
 
 alias matlab='/Applications/MATLAB_R2020a.app/bin/matlab -nojvm -nodisplay -nosplash'
+alias mp=multipass
 
-alias n=node
 alias nx=nginx
 
 alias p=python
@@ -118,7 +117,10 @@ assign_alias_v() {
     echo "FYI, neither Vim or Neovim is installed."
   fi
 }
+
 assign_alias_v
+
+alias vb=VBoxManage
 
 alias wg=wget
 
