@@ -60,15 +60,30 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_STRATEGY="history completion"
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
 
-# Plugins to be loaded with oh-my-zsh
-plugins=(
-  autojump
-  git
-  vi-mode
-  yarn
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
+if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
+  # If in an SSH session
+
+  # Plugins to be loaded with oh-my-zsh
+  plugins=(
+    autojump
+    git
+    vi-mode
+    yarn
+    zsh-syntax-highlighting
+  )
+else
+  # If not in an SSH session
+
+  # Plugins to be loaded with oh-my-zsh
+  plugins=(
+    autojump
+    git
+    vi-mode
+    yarn
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+  )
+fi
 
 # Load autojump if installed manually
 AUTOJUMP_SH="$HOME/.autojump/etc/profile.d/autojump.sh"
