@@ -70,7 +70,7 @@ alias k7='kill %7'
 alias k8='kill %8'
 alias k9='kill %9'
 
-alias -g L='--color=awlasy | less -r'
+alias -g L='--color=always | less -r'
 alias le=less
 alias lg=lein
 
