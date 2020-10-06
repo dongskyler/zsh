@@ -21,7 +21,6 @@ SPACESHIP_PROMPT_ORDER=(
   # rust          # Rust section
   haskell       # Haskell Stack section
   # julia         # Julia section
-  docker        # Docker section
   # aws           # Amazon Web Services section
   # gcloud        # Google Cloud Platform section
   # venv          # virtualenv section
@@ -29,8 +28,9 @@ SPACESHIP_PROMPT_ORDER=(
   pyenv         # Pyenv section
   # dotnet        # .NET section
   # ember         # Ember.js section
-  kubectl       # Kubectl context section
+  # kubectl       # Kubectl context section
   # terraform     # Terraform workspace section
+  # docker        # Docker section
   exec_time     # Execution time
   line_sep      # Line break
   # battery       # Battery level and status
@@ -56,15 +56,6 @@ SPACESHIP_DIR_TRUNC_PREFIX="…/"
 SPACESHIP_DIR_TRUNC_REPO="true"
 SPACESHIP_DIR_COLOR="cyan"
 SPACESHIP_DIR_LOCK_COLOR="red"
-
-# Git
-SPACESHIP_GIT_SHOW="true"
-SPACESHIP_GIT_PREFIX="on "
-SPACESHIP_GIT_BRANCH_SHOW="true"
-SPACESHIP_GIT_BRANCH_SUFFIX=""
-SPACESHIP_GIT_BRANCH_COLOR="blue"
-SPACESHIP_GIT_STATUS_SHOW="true"
-SPACESHIP_GIT_STATUS_COLOR="yellow"
 
 # Time
 SPACESHIP_TIME_SHOW="true"
@@ -110,8 +101,8 @@ SPACESHIP_EXIT_CODE_COLOR="red"
 # Char
 SPACESHIP_CHAR_PREFIX=""
 SPACESHIP_CHAR_SUFFIX=" "
-SPACESHIP_CHAR_SYMBOL="->"
-SPACESHIP_CHAR_SYMBOL_ROOT="=>"
+SPACESHIP_CHAR_SYMBOL="#"
+SPACESHIP_CHAR_SYMBOL_ROOT="##"
 SPACESHIP_CHAR_SYMBOL_SECONDARY="$SPACESHIP_CHAR_SYMBOL"
 
 # Directory
@@ -127,13 +118,13 @@ SPACESHIP_GIT_SYMBOL=""
 SPACESHIP_GIT_BRANCH_SHOW="true"
 SPACESHIP_GIT_BRANCH_PREFIX=""
 SPACESHIP_GIT_BRANCH_SUFFIX=""
-SPACESHIP_GIT_BRANCH_COLOR="magenta"
+SPACESHIP_GIT_BRANCH_COLOR="blue"
 
 # Git status
 SPACESHIP_GIT_STATUS_SHOW="true"
+SPACESHIP_GIT_STATUS_COLOR="yellow"
 SPACESHIP_GIT_STATUS_PREFIX=" ["
 SPACESHIP_GIT_STATUS_SUFFIX="]"
-SPACESHIP_GIT_STATUS_COLOR="red"
 SPACESHIP_GIT_STATUS_UNTRACKED="U"
 SPACESHIP_GIT_STATUS_ADDED="A"
 SPACESHIP_GIT_STATUS_MODIFIED="M"
@@ -221,7 +212,7 @@ SPACESHIP_DOCKER_VERBOSE="false"
 
 # Pyenv
 SPACESHIP_PYENV_SHOW="true"
-SPACESHIP_PYENV_PREFIX="pyenv( "
+SPACESHIP_PYENV_PREFIX="pyenv("
 SPACESHIP_PYENV_SUFFIX=") "
 SPACESHIP_PYENV_SYMBOL=""
 SPACESHIP_PYENV_COLOR="yellow"
