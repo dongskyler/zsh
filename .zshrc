@@ -90,7 +90,7 @@ AUTOJUMP_SH="$HOME/.autojump/etc/profile.d/autojump.sh"
 [[ -s "$AUTOJUMP_SH" ]] && . "$AUTOJUMP_SH"
 # autoload -U compinit && compinit -u
 
-# Path to your oh-my-zsh installation.
+# Path to your oh-my-zsh installation
 [[ -d "$ZSH" ]] && . "$ZSH/oh-my-zsh.sh"
 
 # Load theme configurations
