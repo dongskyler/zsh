@@ -80,6 +80,7 @@ alias mp=multipass
 alias nx=nginx
 
 alias p=python
+alias pm=pacman
 alias pe=pyenv
 alias pea='pyenv activate'
 alias ped='pyenv deactivate'
@@ -98,9 +99,6 @@ alias re=rbenv
 alias -g S='| sort'
 alias s=jobs
 alias sc=systemctl
-alias scr='systemctl reload'
-alias scror='systemctl reload-or-restart'
-alias scrs='systemctl restart'
 alias scs='systemctl start'
 alias scsp='systemctl stop'
 alias scst='systemctl status'
@@ -111,8 +109,11 @@ alias ty=type
 assign_alias_v() {
   if command -v nvim &> /dev/null; then
     alias v=nvim
+    alias vi=nvim
+    alias vim=nvim
   elif command -v vim &> /dev/null; then
     alias v=vim
+    alias vi=vim
   else
     echo "FYI, neither Vim or Neovim is installed."
   fi
