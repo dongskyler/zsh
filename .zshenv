@@ -7,7 +7,7 @@ export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
 
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR=vim
+  export EDITOR=nvim
 else
   export EDITOR=nvim
 fi
@@ -17,16 +17,21 @@ export PAGER=less
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-export NVM_SH_DIR=/usr/local/opt/nvm # This location may vary on different machines
-
 # Java (OpenJDK)
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
 # For Java compilers
 export CPPFLAGS="-I/usr/local/opt/openjdk/include"
 
+# Node version manager
+export NVM_DIR="$HOME/.nvm"
+
+# PYENV
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# MATLAB
+export MATLAB_DIR="$HOME/.matlab"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -34,7 +39,8 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # ----------------------------------------------------------------------
-# Local configuration file to override default environmental variables
+# Load local configuration file, if present, to override default settings
+
 LOCAL_ZSHENV="$ZDOTDIR/.zshenv.local.zsh"
 [[ -f "$LOCAL_ZSHENV" ]] && . "$LOCAL_ZSHENV"
 

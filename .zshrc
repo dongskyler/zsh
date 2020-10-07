@@ -97,13 +97,13 @@ AUTOJUMP_SH="$HOME/.autojump/etc/profile.d/autojump.sh"
 [[ -f "$THEME_CONFIG" ]] && . "$THEME_CONFIG"
 
 # Node version manager (NVM)
-if [[ -d "$NVM_SH_DIR" ]]; then
+if [[ -d "$NVM_DIR" ]]; then
   declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
   NODE_GLOBALS+=("node")
   NODE_GLOBALS+=("nvm")
   load_nvm () {
-    [[ -s "$NVM_SH_DIR/nvm.sh" ]] && . "$NVM_SH_DIR/nvm.sh"
-    [[ -s "$NVM_SH_DIR/etc/bash_completion.d/nvm" ]] && . "$NVM_SH_DIR/etc/bash_completion.d/nvm"
+    [[ -s "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
+    [[ -s "$NVM_DIR/etc/bash_completion.d/nvm" ]] && . "$NVM_DIR/etc/bash_completion.d/nvm"
   }
   for cmd in "${NODE_GLOBALS[@]}"; do
       eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
@@ -127,7 +127,16 @@ if [[ -d $PYENV_ROOT  ]]; then
 fi
 
 # poetry (Python)
-[[ -d "$HOME"/.poetry ]] && export PATH="$HOME/.poetry/bin:$PATH"
+[[ -d "$HOME/.poetry" ]] && export PATH="$HOME/.poetry/bin:$PATH"
 
 # Import aliases
 [[ -f "$ALIASES_FILE" ]] && . "$ALIASES_FILE"
+
+# ----------------------------------------------------------------------
+# Load local configuration file, if present, to override default settings
+
+LOCAL_ZSHRC="$ZDOTDIR/.zshrc.local.zsh"
+[[ -f "$LOCAL_ZSHRC" ]] && . "$LOCAL_ZSHRC"
+
+# DO NOT define environmental variables below this line
+# ----------------------------------------------------------------------
