@@ -237,7 +237,7 @@ if [[ -f "$LOCAL_ALIASES" ]]; then
   . "$LOCAL_ALIASES"
   print -P "%F{green}Local aliases%f are loaded"
 else
-  print -P "%F{yellow}No local aliases are found"
+  print -P "%F{yellow}No local aliases%f are found"
 fi
 
 # DO NOT define environmental variables below this line
