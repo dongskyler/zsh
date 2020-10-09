@@ -1,5 +1,4 @@
 #!/bin/zsh
 
 # Start an ssh-agent in the background
-echo 'Start an ssh-agent in the background'
-eval "$(ssh-agent -s)"
+print -P "%F{green}ssh-agent%f is started with %F{green}$(eval $(ssh-agent -s))%f\n"

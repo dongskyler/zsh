@@ -19,7 +19,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-UPDATE_ZSH_DAYS=21
+UPDATE_ZSH_DAYS=14
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS=true
@@ -31,7 +31,7 @@ UPDATE_ZSH_DAYS=21
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -47,7 +47,7 @@ UPDATE_ZSH_DAYS=21
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="yyyy-mm-dd"
 
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM="$ZDOTDIR/custom"
@@ -60,9 +60,7 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_STRATEGY="history completion"
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
 
-if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
-  # If in an SSH session
-
+set_zsh_plugins () {
   # Plugins to be loaded with oh-my-zsh
   plugins=(
     autojump
@@ -71,24 +69,18 @@ if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
     yarn
     zsh-syntax-highlighting
   )
-else
-  # If not in an SSH session
 
-  # Plugins to be loaded with oh-my-zsh
-  plugins=(
-    autojump
-    git
-    vi-mode
-    yarn
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-  )
-fi
+  if ! [[ -n "$SSH_CLIENT" ]] && ! [[ -n "$SSH_TTY" ]]; then
+    # If not in an SSH session
+    plugins+=(zsh-autosuggestions)
+  fi
+}
+
+set_zsh_plugins && unset -f set_zsh_plugins
 
 # Load autojump if installed manually
 AUTOJUMP_SH="$HOME/.autojump/etc/profile.d/autojump.sh"
 [[ -s "$AUTOJUMP_SH" ]] && . "$AUTOJUMP_SH"
-# autoload -U compinit && compinit -u
 
 # Path to your oh-my-zsh installation
 [[ -d "$ZSH" ]] && . "$ZSH/oh-my-zsh.sh"
@@ -101,10 +93,12 @@ if [[ -d "$NVM_DIR" ]]; then
   declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
   NODE_GLOBALS+=("node")
   NODE_GLOBALS+=("nvm")
+
   load_nvm () {
     [[ -s "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
     [[ -s "$NVM_DIR/etc/bash_completion.d/nvm" ]] && . "$NVM_DIR/etc/bash_completion.d/nvm"
   }
+
   for cmd in "${NODE_GLOBALS[@]}"; do
       eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
   done

@@ -6,7 +6,6 @@
 
 alias ,='cd ..'
 alias @=ssh
-alias %=pwd
 
 # A
 
@@ -18,6 +17,15 @@ alias agug='apt-get upgrade'
 # B
 
 alias b=bg
+alias b1='bg %1'
+alias b2='bg %2'
+alias b3='bg %3'
+alias b4='bg %4'
+alias b5='bg %5'
+alias b6='bg %6'
+alias b7='bg %7'
+alias b8='bg %8'
+alias b9='bg %9'
 
 alias br=brew
 alias bri='brew install'
@@ -30,16 +38,6 @@ alias brss='brew services start'
 alias brssp='brew services stop'
 alias bru='brew update'
 alias brug='brew upgrade'
-
-alias b1='bg %1'
-alias b2='bg %2'
-alias b3='bg %3'
-alias b4='bg %4'
-alias b5='bg %5'
-alias b6='bg %6'
-alias b7='bg %7'
-alias b8='bg %8'
-alias b9='bg %9'
 
 # C
 
@@ -104,9 +102,15 @@ alias lg=lein
 
 # M
 
-if [[ -d $MATLAB_DIR ]]; then
-  alias matlab="$MATLAB_DIR/matlab -nojvm -nodisplay -nosplash"
-fi
+assign_alias_matlab () {
+  if [[ -d $MATLAB_DIR ]]; then
+    alias matlab="$MATLAB_DIR/matlab -nojvm -nodisplay -nosplash"
+  fi
+
+  return 0
+}
+
+assign_alias_matlab && unset -f assign_alias_matlab
 
 # N
 
@@ -164,18 +168,26 @@ udu='udisksctl unmount'
 
 # V
 
-if command -v nvim &> /dev/null; then
-  alias v=nvim
-  alias vi=nvim
-elif command -v vim &> /dev/null; then
-  alias v=vim
-  alias vi=vim
-elif command -v vi &> d/dev/null; then
-  alias v=vi
-  echo "Either Vim or Neovim is installed, but it is not clear which one is."
-else
-  echo "Neither Vim or Neovim is installed."
-fi
+assign_alias_v () {
+  if command -v nvim &> /dev/null; then
+    alias v=nvim
+    alias vi=nvim
+    print -P "%F{green}Neovim%f is installed\n"
+  elif command -v vim &> /dev/null; then
+    alias v=vim
+    alias vi=vim
+    print -P "%F{green}Vim%f is installed, although %F{red}Neovim%f is not\n"
+  elif command -v vi &> /dev/null; then
+    alias v=vi
+    print -P "Either %F{yellow}Vim%f or %F{yellow}Neovim%f is installed, but it is not clear which one is\n"
+  else
+    print -P "Neither %F{red}Vim%f or %F{red}Neovim%f is installed\n"
+  fi
+
+  return 0
+}
+
+assign_alias_v && unset -f assign_alias_v
 
 alias vb=VBoxManage
 alias vbc='VBoxManager controlvm'
