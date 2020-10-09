@@ -9,7 +9,7 @@ alias @=ssh
 
 # A
 
-alias ag=apt-get
+alias ag='apt-get'
 alias agi='apt-get install'
 alias agu='apt-get update'
 alias agug='apt-get upgrade'
@@ -76,6 +76,7 @@ alias f9='fg %9'
 
 # G
 
+alias -g G='| grep'
 alias gfu='git fetch upstream'
 
 # K
@@ -94,8 +95,8 @@ alias k9='kill %9'
 
 # L
 
-alias -g L='--color=always | less -r'
-
+alias -g L='| less -r'
+alias -g Lc='--color=always | less -r'
 alias le=less
 
 alias lg=lein
@@ -162,9 +163,9 @@ alias ty=type
 
 # U
 
-ud=udisksctl
-udm='udisksctl mount'
-udu='udisksctl unmount'
+alias ud=udisksctl
+alias udm='udisksctl mount'
+alias udu='udisksctl unmount'
 
 # V
 
