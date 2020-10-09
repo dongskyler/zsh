@@ -173,16 +173,16 @@ assign_alias_v () {
   if command -v nvim &> /dev/null; then
     alias v=nvim
     alias vi=nvim
-    print -P "%F{green}Neovim%f is installed"
+    print -P "%F{green}Neovim is installed%f"
   elif command -v vim &> /dev/null; then
     alias v=vim
     alias vi=vim
-    print -P "%F{green}Vim%f is installed, although %F{red}Neovim%f is not"
+    print -P "%F{green}Vim is installed%f, although %F{red}Neovim is not%f"
   elif command -v vi &> /dev/null; then
     alias v=vi
-    print -P "Either %F{yellow}Vim%f or %F{yellow}Neovim%f is installed, but it is not clear which one is"
+    print -P "%F{yellow}Either Vim or Neovim is installed, but it is not clear which one is%f"
   else
-    print -P "Neither %F{red}Vim%f or %F{red}Neovim%f is installed"
+    print -P "%F{red}Neither Vim or Neovim is installed%f"
   fi
 
   return 0
@@ -226,7 +226,7 @@ alias wg=wget
 alias yc='yarn coverage'
 alias yf='yarn format'
 
-print -P "%F{green}Aliases are loaded"
+print -P "%F{green}Aliases are loaded%f"
 
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
@@ -235,9 +235,9 @@ LOCAL_ALIASES="$ZDOTDIR/aliases.local.zsh"
 
 if [[ -f "$LOCAL_ALIASES" ]]; then
   . "$LOCAL_ALIASES"
-  print -P "%F{green}Local aliases%f are loaded"
+  print -P "%F{green}Local aliases are loaded%f"
 else
-  print -P "%F{yellow}No local aliases%f are found"
+  print -P "%F{yellow}No local aliases are found%f"
 fi
 
 # DO NOT define environmental variables below this line

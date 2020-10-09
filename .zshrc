@@ -126,7 +126,7 @@ fi
 # Import aliases
 [[ -f "$ALIASES_FILE" ]] && . "$ALIASES_FILE"
 
-print -P "%F{green}Zshrc%f is loaded"
+print -P "%F{green}Zshrc is loaded%f"
 
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
@@ -135,9 +135,9 @@ LOCAL_ZSHRC="$ZDOTDIR/.zshrc.local.zsh"
 
 if [[ -f "$LOCAL_ZSHRC" ]]; then
   . "$LOCAL_ZSHRC"
-  print -P "%F{green}Local zshrc%f is loaded"
+  print -P "%F{green}Local zshrc is loaded%f"
 else
-  print -P "%F{yellow}No local zshrc%f is found"
+  print -P "%F{yellow}No local zshrc is found%f"
 fi
 
 # DO NOT define environmental variables below this line
