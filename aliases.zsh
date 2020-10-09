@@ -104,13 +104,9 @@ alias lg=lein
 
 # M
 
-assign_alias_matlab() {
-  if [[ -d $MATLAB_DIR ]]; then
-    alias matlab="$MATLAB_DIR/matlab -nojvm -nodisplay -nosplash"
-  fi
-}
-
-assign_alias_matlab && unset -f assign_alias_matlab
+if [[ -d $MATLAB_DIR ]]; then
+  alias matlab="$MATLAB_DIR/matlab -nojvm -nodisplay -nosplash"
+fi
 
 # N
 
@@ -160,24 +156,26 @@ alias scls='systemctl list-units --type=service'
 
 alias ty=type
 
+# U
+
+ud=udisksctl
+udm='udisksctl mount'
+udu='udisksctl unmount'
+
 # V
 
-assign_alias_v() {
-  if command -v nvim &> /dev/null; then
-    alias v=nvim
-    alias vi=nvim
-  elif command -v vim &> /dev/null; then
-    alias v=vim
-    alias vi=vim
-  elif command -v vi &> d/dev/null; then
-    alias v=vi
-    echo "Either Vim or Neovim is installed, but it is not clear which one is."
-  else
-    echo "Neither Vim or Neovim is installed."
-  fi
-}
-
-assign_alias_v && unset -f assign_alias_v
+if command -v nvim &> /dev/null; then
+  alias v=nvim
+  alias vi=nvim
+elif command -v vim &> /dev/null; then
+  alias v=vim
+  alias vi=vim
+elif command -v vi &> d/dev/null; then
+  alias v=vi
+  echo "Either Vim or Neovim is installed, but it is not clear which one is."
+else
+  echo "Neither Vim or Neovim is installed."
+fi
 
 alias vb=VBoxManage
 alias vbc='VBoxManager controlvm'
