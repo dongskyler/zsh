@@ -2,7 +2,7 @@ printf "\n"
 
 print -P "%F{green}$(whoami)%f@%F{blue}$(hostname -s)%f\n"
 
-print -P "%F{magenta}\
+print -P "%F{cyan}\
  ▄▀  █▀▄ ██▀ ██▀ ▀█▀ █ █▄ █ ▄▀  ▄▀▀
  ▀▄█ █▀▄ █▄▄ █▄▄  █  █ █ ▀█ ▀▄█ ▄██
 %f\n"
