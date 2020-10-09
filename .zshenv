@@ -38,11 +38,19 @@ export MATLAB_DIR="$HOME/.matlab"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+print -P "%F{green}Zshenv%f is loaded"
+
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
 
 LOCAL_ZSHENV="$ZDOTDIR/.zshenv.local.zsh"
-[[ -f "$LOCAL_ZSHENV" ]] && . "$LOCAL_ZSHENV"
+
+if [[ -f "$LOCAL_ZSHENV" ]]; then
+  . "$LOCAL_ZSHENV"
+  print -P "%F{green}Local zshenv%f is loaded"
+else
+  print -P "%F{yellow}No local zshenv%f is found"
+fi
 
 # DO NOT define environmental variables below this line
 # ----------------------------------------------------------------------

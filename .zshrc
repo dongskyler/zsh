@@ -107,7 +107,7 @@ fi
 # rbenv (Ruby)
 if command -v rbenv &> /dev/null; then
   if which rbenv > /dev/null; then
-    eval "$(rbenv init -)";
+    eval "$(rbenv init -)"
   fi
 fi
 
@@ -126,11 +126,20 @@ fi
 # Import aliases
 [[ -f "$ALIASES_FILE" ]] && . "$ALIASES_FILE"
 
+print -P "%F{green}Zshrc%f is loaded"
+
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
 
 LOCAL_ZSHRC="$ZDOTDIR/.zshrc.local.zsh"
-[[ -f "$LOCAL_ZSHRC" ]] && . "$LOCAL_ZSHRC"
+
+if [[ -f "$LOCAL_ZSHRC" ]]; then
+  . "$LOCAL_ZSHRC"
+  print -P "%F{green}Local zshrc%f is loaded"
+else
+  print -P "%F{yellow}No local zshrc%f is found"
+fi
 
 # DO NOT define environmental variables below this line
 # ----------------------------------------------------------------------
+
