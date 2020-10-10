@@ -49,9 +49,6 @@ alias cl=curl
 
 alias cls=clear
 
-alias chm=chmod
-alias cho=chown
-
 # D
 
 alias dk=docker
