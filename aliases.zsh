@@ -223,8 +223,6 @@ alias wg=wget
 alias yc='yarn coverage'
 alias yf='yarn format'
 
-print -P "%F{green}Aliases are loaded%f"
-
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
 
@@ -232,9 +230,6 @@ LOCAL_ALIASES="$ZDOTDIR/aliases.local.zsh"
 
 if [[ -f "$LOCAL_ALIASES" ]]; then
   . "$LOCAL_ALIASES"
-  print -P "%F{green}Local aliases are loaded%f"
-else
-  print -P "%F{yellow}No local aliases are found%f"
 fi
 
 # DO NOT define environmental variables below this line
