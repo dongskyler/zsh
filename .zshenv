@@ -1,36 +1,32 @@
 #!/bin/zsh
 
-export ZDOTDIR="$HOME/.zsh"
-
 export LANG=en_US.UTF-8
 
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY
 
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR=nvim
-else
-  export EDITOR=nvim
-fi
+export EDITOR=nvim
 
 export PAGER=less
+
+export ZDOTDIR="$HOME/.zsh"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-# Java (OpenJDK)
-export PATH="/usr/local/opt/openjdk/bin:$PATH"
-
-# For Java compilers
-export CPPFLAGS="-I/usr/local/opt/openjdk/include"
-
-# Node version manager
 export NVM_DIR="$HOME/.nvm"
 
-# PYENV
 export PYENV_ROOT="$HOME/.pyenv"
+if [[ -d "$PYENV_ROOT" ]]; then
+  export PATH="$PYENV_ROOT/bin:$PATH"
+fi
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
-# MATLAB
+export POETRY_DIR="$HOME/.poetry"
+if [[ -d "$POETRY_DIR" ]]; then
+  export PATH="$POETRY_DIR/bin:$PATH"
+fi
+
 export MATLAB_DIR="$HOME/.matlab"
 
 # Compilation flags
@@ -41,11 +37,15 @@ export MATLAB_DIR="$HOME/.matlab"
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
 
-LOCAL_ZSHENV="$ZDOTDIR/.zshenv.local.zsh"
+load_local_zshenv () {
+  LOCAL_ZSHENV="$ZDOTDIR/.zshenv.local.zsh"
 
-if [[ -f "$LOCAL_ZSHENV" ]]; then
-  . "$LOCAL_ZSHENV"
-fi
+  if [[ -f "$LOCAL_ZSHENV" ]]; then
+    . "$LOCAL_ZSHENV"
+  fi
+}
 
-# DO NOT define environmental variables below this line
+load_local_zshenv && unset -f load_local_zshenv
+
+# No more code below this line
 # ----------------------------------------------------------------------

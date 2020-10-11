@@ -33,7 +33,7 @@ SPACESHIP_PROMPT_ORDER=(
   # docker        # Docker section
   exec_time     # Execution time
   line_sep      # Line break
-  # battery       # Battery level and status
+  battery       # Battery level and status
   vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
   exit_code     # Exit code section
@@ -89,7 +89,16 @@ SPACESHIP_EXEC_TIME_SUFFIX=") "
 SPACESHIP_EXEC_TIME_COLOR="yellow"
 SPACESHIP_EXEC_TIME_ELAPSED=2
 
-#  Mode
+# Battery
+SPACESHIP_BATTERY_SHOW="true"
+SPACESHIP_BATTERY_PREFIX="battery("
+SPACESHIP_BATTERY_SUFFIX=") "
+SPACESHIP_BATTERY_SYMBOL_CHARGING="+"
+SPACESHIP_BATTERY_SYMBOL_DISCHARGING="-"
+SPACESHIP_BATTERY_SYMBOL_FULL="."
+SPACESHIP_BATTERY_THRESHOLD=30
+
+# Vi-mode
 SPACESHIP_VI_MODE_SHOW="true"
 
 # Jobs

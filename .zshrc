@@ -34,7 +34,7 @@ UPDATE_ZSH_DAYS=14
 ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -49,19 +49,16 @@ ENABLE_CORRECTION="false"
 # see 'man strftime' for details.
 HIST_STAMPS="yyyy-mm-dd"
 
-# Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM="$ZDOTDIR/custom"
 
 ZSH_COMPDUMP="$ZDOTDIR/.zcompdump"
 
-# Zsh-autosuggestions configurations
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_STRATEGY="history completion"
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
 
 set_zsh_plugins () {
-  # Plugins to be loaded with oh-my-zsh
   plugins=(
     autojump
     git
@@ -70,71 +67,110 @@ set_zsh_plugins () {
     zsh-syntax-highlighting
   )
 
-  if ! [[ -n "$SSH_CLIENT" ]] && ! [[ -n "$SSH_TTY" ]]; then
-    # If not in an SSH session
+  if [[ -z "$SSH_CLIENT" ]] && [[ -z "$SSH_TTY" ]]; then
     plugins+=(zsh-autosuggestions)
   fi
 }
 
 set_zsh_plugins && unset -f set_zsh_plugins
 
-# Load autojump if installed manually
-AUTOJUMP_SH="$HOME/.autojump/etc/profile.d/autojump.sh"
-[[ -s "$AUTOJUMP_SH" ]] && . "$AUTOJUMP_SH"
+load_autojump () {
+  AUTOJUMP_SH="$HOME/.autojump/etc/profile.d/autojump.sh"
 
-# Path to your oh-my-zsh installation
-[[ -d "$ZSH" ]] && . "$ZSH/oh-my-zsh.sh"
-
-# Load theme configurations
-[[ -f "$THEME_CONFIG" ]] && . "$THEME_CONFIG"
-
-# Node version manager (NVM)
-if [[ -d "$NVM_DIR" ]]; then
-  declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
-  NODE_GLOBALS+=("node")
-  NODE_GLOBALS+=("nvm")
-
-  load_nvm () {
-    [[ -s "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
-    [[ -s "$NVM_DIR/etc/bash_completion.d/nvm" ]] && . "$NVM_DIR/etc/bash_completion.d/nvm"
-  }
-
-  for cmd in "${NODE_GLOBALS[@]}"; do
-      eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
-  done
-fi
-
-# rbenv (Ruby)
-if command -v rbenv &> /dev/null; then
-  if which rbenv > /dev/null; then
-    eval "$(rbenv init -)"
+  if [[ -s "$AUTOJUMP_SH" ]]; then
+    . "$AUTOJUMP_SH"
   fi
-fi
+}
 
-# pyenv (Python)
-if [[ -d $PYENV_ROOT  ]]; then
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
+load_autojump && unset -f load_autojump
+
+load_oh_my_zsh () {
+  if [[ -d "$ZSH" ]]; then
+    . "$ZSH/oh-my-zsh.sh"
   fi
-  eval "$(pyenv virtualenv-init -)"
-fi
+}
 
-# poetry (Python)
-[[ -d "$HOME/.poetry" ]] && export PATH="$HOME/.poetry/bin:$PATH"
+load_oh_my_zsh && unset -f load_oh_my_zsh
 
-# Import aliases
-[[ -f "$ALIASES_FILE" ]] && . "$ALIASES_FILE"
+load_zsh_theme_config () {
+  if [[ -f "$THEME_CONFIG" ]]; then
+    . "$THEME_CONFIG"
+  fi
+}
+
+load_zsh_theme_config && unset -f load_zsh_theme_config
+
+load_nvm () {
+  NVM_SH="$NVM_DIR/nvm.sh"
+  NVM_BASH_COMPLETION="$NVM_DIR/etc/bash_completion.d/nvm"
+
+  if [[ -s "$NVM_SH" ]]; then
+    . "$NVM_SH"
+  fi
+
+  if [[ -s "$NVM_BASH_COMPLETION" ]]; then
+    . "$NVM_BASH_COMPLETION"
+  fi
+}
+
+init_nvm () {
+  if [[ -d "$NVM_DIR" ]]; then
+    NODE_GLOBALS=$(find "$HOME/.nvm/versions/node" -maxdepth 3 -type l \
+      -wholename '*/bin/*' | xargs -n1 basename | sort | uniq)
+    declare -a NODE_GLOBALS
+    NODE_GLOBALS+=("node")
+    NODE_GLOBALS+=("nvm")
+
+    for cmd in "${NODE_GLOBALS[@]}"; do
+        eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
+    done
+  fi
+}
+
+init_nvm && unset -f init_nvm
+
+init_rbenv () {
+  if command -v rbenv &> /dev/null; then
+    if which rbenv > /dev/null; then
+      eval "$(rbenv init -)"
+    fi
+  fi
+}
+
+init_rbenv && unset -f init_rbenv
+
+init_pyenv () {
+  if [[ -d "$PYENV_ROOT" ]]; then
+    if command -v pyenv 1>/dev/null 2>&1; then
+      eval "$(pyenv init -)"
+    fi
+
+    eval "$(pyenv virtualenv-init -)"
+  fi
+}
+
+init_pyenv && unset -f init_pyenv
+
+load_aliases() {
+  if [[ -f "$ALIASES_FILE" ]]; then
+    . "$ALIASES_FILE"
+  fi
+}
+
+load_aliases && unset -f load_aliases
 
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
 
-LOCAL_ZSHRC="$ZDOTDIR/.zshrc.local.zsh"
+load_local_zshrc () {
+  LOCAL_ZSHRC="$ZDOTDIR/.zshrc.local.zsh"
 
-if [[ -f "$LOCAL_ZSHRC" ]]; then
+  if [[ -f "$LOCAL_ZSHRC" ]]; then
   . "$LOCAL_ZSHRC"
-fi
+  fi
+}
 
-# DO NOT define environmental variables below this line
+load_local_zshrc && unset -f load_local_zshrc
+
+# No more code below this line
 # ----------------------------------------------------------------------
-

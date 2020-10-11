@@ -1,4 +1,3 @@
 # zsh
 
 My zsh configurations.
-
