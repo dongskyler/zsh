@@ -227,11 +227,15 @@ alias yf='yarn format'
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
 
-LOCAL_ALIASES="$ZDOTDIR/aliases.local.zsh"
+load_local_aliases() {
+  LOCAL_ALIASES="$ZDOTDIR/aliases.local.zsh"
 
-if [[ -f "$LOCAL_ALIASES" ]]; then
-  . "$LOCAL_ALIASES"
-fi
+  if [[ -f "$LOCAL_ALIASES" ]]; then
+    . "$LOCAL_ALIASES"
+  fi
+}
 
-# DO NOT define environmental variables below this line
+load_local_aliases && unset -f load_local_aliases
+
+# No more code below this line
 # ----------------------------------------------------------------------
