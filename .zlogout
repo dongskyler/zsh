@@ -8,7 +8,7 @@ print -P "\n%F{cyan}\
  ▄██ ▀▄▀   █▄▄ ▀▄▀ █ ▀█ ▀▄█
 %f"
 
-printf "Exiting in 1 second...\n"
+print -P "Exiting %B%F{cyan}$(whoami)%f@%F{cyan}$(hostname -s)%f%b in 1 second..."
 
 sleep 1
 clear
