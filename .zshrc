@@ -85,8 +85,12 @@ load_autojump () {
 load_autojump && unset -f load_autojump
 
 load_oh_my_zsh () {
-  if [[ -d "$ZSH" ]]; then
-    . "$ZSH/oh-my-zsh.sh"
+  ZSH_SH="$ZSH/oh-my-zsh.sh"
+
+  if [[ -f "$ZSH_SH" ]]; then
+    . "$ZSH_SH"
+  else
+    print -P "%F{red}%BOh-my-zsh%b cannot be found!%f"
   fi
 }
 
@@ -122,7 +126,7 @@ init_nvm () {
     NODE_GLOBALS+=("nvm")
 
     for cmd in "${NODE_GLOBALS[@]}"; do
-        eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
+      eval "${cmd}(){ unset -f ${NODE_GLOBALS}; load_nvm; ${cmd} \$@ }"
     done
   fi
 }
@@ -166,7 +170,7 @@ load_local_zshrc () {
   LOCAL_ZSHRC="$ZDOTDIR/.zshrc.local.zsh"
 
   if [[ -f "$LOCAL_ZSHRC" ]]; then
-  . "$LOCAL_ZSHRC"
+    . "$LOCAL_ZSHRC"
   fi
 }
 

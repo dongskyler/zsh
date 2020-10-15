@@ -14,25 +14,22 @@ export ZDOTDIR="$HOME/.zsh"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-
 export PYENV_ROOT="$HOME/.pyenv"
+
 if [[ -d "$PYENV_ROOT" ]]; then
   export PATH="$PYENV_ROOT/bin:$PATH"
+  export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 fi
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 export POETRY_DIR="$HOME/.poetry"
+
 if [[ -d "$POETRY_DIR" ]]; then
   export PATH="$POETRY_DIR/bin:$PATH"
 fi
 
+export NVM_DIR="$HOME/.nvm"
+
 export MATLAB_DIR="$HOME/.matlab"
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# export MANPATH="/usr/local/man:$MANPATH"
 
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
