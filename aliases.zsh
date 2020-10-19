@@ -102,7 +102,7 @@ alias lg=lein
 
 assign_alias_matlab () {
   if [[ -d $MATLAB_DIR ]]; then
-    alias matlab="$MATLAB_DIR/matlab -nojvm -nodisplay -nosplash"
+    alias matlab="$MATLAB_DIR/matlab -nodesktop -nosplash"
   fi
 
   return 0
