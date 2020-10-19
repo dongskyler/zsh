@@ -69,7 +69,7 @@ set_zsh_plugins () {
   if command -v autojump &> /dev/null; then
     plugins+=(autojump)
   else
-    print -P "%F{red}Autojump is not installed%f"
+    print -P "%F{red}%BAutojump%b is not installed%f"
   fi
 
   if [[ -z "$SSH_CLIENT" ]] && [[ -z "$SSH_TTY" ]]; then

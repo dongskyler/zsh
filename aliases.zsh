@@ -170,15 +170,15 @@ assign_alias_v () {
   if command -v nvim &> /dev/null; then
     alias v=nvim
     alias vi=nvim
-    print -P "%F{green}%BNeovim%b is installed%f"
+    print -P "%F{green}%BNeovim%b is installed and mapped to aliases v and vi%f"
   elif command -v vim &> /dev/null; then
     alias v=vim
     alias vi=vim
-    print -P "%F{green}%BVim%b is installed%f, %F{red}although %BNeovim%b is not%f"
+    print -P "%F{green}%BVim%b is installed and mapped to aliases v and vi%f"
   elif command -v vi &> /dev/null; then
     alias v=vi
-    print -P "%F{yellow}Either %BVim%b or %BNeovim%b is installed, but it is not \
-      clear which one is%f"
+    print -P "%F{yellow}Either %BVim%b or %BNeovim%b is installed and mapped \
+      to aliases v and vi, but it is not clear which one is%f"
   else
     print -P "%F{red}Neither %BVim%b or %BNeovim%b is installed%f"
   fi
