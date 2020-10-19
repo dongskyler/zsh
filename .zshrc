@@ -60,12 +60,17 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
 
 set_zsh_plugins () {
   plugins=(
-    autojump
     git
     vi-mode
     yarn
     zsh-syntax-highlighting
   )
+
+  if command -v autojump &> /dev/null; then
+    plugins+=(autojump)
+  else
+    print -P "%F{red}Autojump is not installed%f"
+  fi
 
   if [[ -z "$SSH_CLIENT" ]] && [[ -z "$SSH_TTY" ]]; then
     plugins+=(zsh-autosuggestions)
