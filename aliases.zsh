@@ -177,8 +177,7 @@ assign_alias_v () {
     print -P "%F{green}%BVim%b is installed and mapped to aliases v and vi%f"
   elif command -v vi &> /dev/null; then
     alias v=vi
-    print -P "%F{yellow}Either %BVim%b or %BNeovim%b is installed and mapped \
-      to aliases v and vi, but it is not clear which one is%f"
+    print -P "%F{yellow}Either %BVim%b or %BNeovim%b is installed and mapped to aliases v and vi, but it is not clear which one is%f"
   else
     print -P "%F{red}Neither %BVim%b or %BNeovim%b is installed%f"
   fi
