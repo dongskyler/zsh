@@ -69,7 +69,7 @@ set_zsh_plugins () {
   if command -v autojump &> /dev/null; then
     plugins+=(autojump)
   else
-    print -P "%F{red}%BAutojump%b is not installed%f"
+    print -P "%F{yellow}Info: %BAutojump%b is not installed%f"
   fi
 
   if [[ -z "$SSH_CLIENT" ]] && [[ -z "$SSH_TTY" ]]; then
@@ -95,7 +95,7 @@ load_oh_my_zsh () {
   if [[ -f "$ZSH_SH" ]]; then
     . "$ZSH_SH"
   else
-    print -P "%F{red}%BOh-my-zsh%b cannot be found!%f"
+    print -P "%F{red}Error: %BOh-my-zsh%b cannot be found!%f"
   fi
 }
 
