@@ -58,6 +58,16 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_STRATEGY="history completion"
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="?(#c50,)"
 
+load_autojump () {
+  AUTOJUMP_SH="$HOME/.autojump/etc/profile.d/autojump.sh"
+
+  if [[ -s "$AUTOJUMP_SH" ]]; then
+    . "$AUTOJUMP_SH"
+  fi
+}
+
+load_autojump && unset -f load_autojump
+
 set_zsh_plugins () {
   plugins=(
     git
@@ -78,16 +88,6 @@ set_zsh_plugins () {
 }
 
 set_zsh_plugins && unset -f set_zsh_plugins
-
-load_autojump () {
-  AUTOJUMP_SH="$HOME/.autojump/etc/profile.d/autojump.sh"
-
-  if [[ -s "$AUTOJUMP_SH" ]]; then
-    . "$AUTOJUMP_SH"
-  fi
-}
-
-load_autojump && unset -f load_autojump
 
 load_oh_my_zsh () {
   ZSH_SH="$ZSH/oh-my-zsh.sh"
@@ -124,6 +124,7 @@ load_nvm () {
 
 init_nvm () {
   if [[ -d "$NVM_DIR" ]]; then
+    print -P "%F{green}Info: %BNVM%b is installed%f"
     NODE_GLOBALS=$(find "$HOME/.nvm/versions/node" -maxdepth 3 -type l \
       -wholename '*/bin/*' | xargs -n1 basename | sort | uniq)
     declare -a NODE_GLOBALS
@@ -142,6 +143,7 @@ init_rbenv () {
   if command -v rbenv &> /dev/null; then
     if which rbenv > /dev/null; then
       eval "$(rbenv init -)"
+      print -P "%F{green}Info: %Brbenv%b is installed%f"
     fi
   fi
 }
@@ -152,6 +154,7 @@ init_pyenv () {
   if [[ -d "$PYENV_ROOT" ]]; then
     if command -v pyenv 1>/dev/null 2>&1; then
       eval "$(pyenv init -)"
+      print -P "%F{green}Info: %Bpyenv%b is installed%f"
     fi
 
     eval "$(pyenv virtualenv-init -)"
