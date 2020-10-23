@@ -124,7 +124,6 @@ load_nvm () {
 
 init_nvm () {
   if [[ -d "$NVM_DIR" ]]; then
-    print -P "%F{green}Info: %BNVM%b is installed%f"
     NODE_GLOBALS=$(find "$HOME/.nvm/versions/node" -maxdepth 3 -type l \
       -wholename '*/bin/*' | xargs -n1 basename | sort | uniq)
     declare -a NODE_GLOBALS
@@ -143,7 +142,6 @@ init_rbenv () {
   if command -v rbenv &> /dev/null; then
     if which rbenv > /dev/null; then
       eval "$(rbenv init -)"
-      print -P "%F{green}Info: %Brbenv%b is installed%f"
     fi
   fi
 }
@@ -154,7 +152,6 @@ init_pyenv () {
   if [[ -d "$PYENV_ROOT" ]]; then
     if command -v pyenv 1>/dev/null 2>&1; then
       eval "$(pyenv init -)"
-      print -P "%F{green}Info: %Bpyenv%b is installed%f"
     fi
 
     eval "$(pyenv virtualenv-init -)"
