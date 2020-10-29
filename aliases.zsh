@@ -98,6 +98,8 @@ alias le=less
 
 alias lg=lein
 
+alias lZ='ls -lahZ'
+
 # M
 
 assign_alias_matlab () {
