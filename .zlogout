@@ -1,5 +1,7 @@
 printf "Cleaning up...\n\n"
 
+ssh-add -D
+
 trap 'test -n "$SSH_AGENT_PID" && eval "$(ssh-agent -k)"' 0
 print -P "%F{blue}Info: %Bssh-agent%b with PID $SSH_AGENT_PID terminated%f"
 
