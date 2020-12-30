@@ -183,3 +183,6 @@ load_local_zshrc && unset -f load_local_zshrc
 
 # No more code below this line
 # ----------------------------------------------------------------------
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
