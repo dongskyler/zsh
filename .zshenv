@@ -27,6 +27,10 @@ if [[ -d "$POETRY_DIR" ]]; then
   export PATH="$POETRY_DIR/bin:$PATH"
 fi
 
+if [[ -d "$HOME/.node_modules" ]]; then
+  export PATH="$HOME/.node_modules/bin:$PATH"
+fi
+
 export NVM_DIR="$HOME/.nvm"
 
 export MATLAB_DIR="$HOME/.matlab"

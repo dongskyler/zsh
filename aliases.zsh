@@ -55,8 +55,7 @@ alias dk=docker
 
 alias dn=dnf
 alias dni='dnf install'
-alias dnu='dnf update'
-alias dnug='dnf upgrade'
+alias dnu='dnf upgrade'
 
 # F
 
