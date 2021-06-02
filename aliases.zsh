@@ -74,6 +74,8 @@ alias f9='fg %9'
 
 alias -g G='| grep'
 alias gfu='git fetch upstream'
+alias gsuir='git submodule update --init --recursive'
+alias gsurr='git submodule update --recursive --remote'
 
 # K
 
