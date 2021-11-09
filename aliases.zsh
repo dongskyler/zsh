@@ -9,6 +9,8 @@ alias @=ssh
 
 # A
 
+alias -g A='| ack'
+
 alias ag='apt-get'
 alias agi='apt-get install'
 alias agu='apt-get update'
@@ -76,10 +78,17 @@ alias -g G='| grep'
 alias gfu='git fetch upstream'
 alias gsuir='git submodule update --init --recursive'
 alias gsurr='git submodule update --recursive --remote'
+alias gwt='git worktree'
+alias gwta='git worktree add'
+alias gwtl='git worktree list'
+alias gwtr='git worktree remove'
 
 # K
 
 alias k=kubectl
+
+alias k_9='kill -9'
+alias k_15='kill -15'
 
 alias k1='kill %1'
 alias k2='kill %2'
