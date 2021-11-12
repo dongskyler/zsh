@@ -75,9 +75,11 @@ alias f9='fg %9'
 # G
 
 alias -g G='| grep'
+alias gdtl='git difftool'
 alias gfu='git fetch upstream'
-alias gsuir='git submodule update --init --recursive'
-alias gsurr='git submodule update --recursive --remote'
+alias gmtl='git mergetool'
+alias gsui='git submodule update --init --recursive'
+alias gsur='git submodule update --recursive --remote'
 alias gwt='git worktree'
 alias gwta='git worktree add'
 alias gwtl='git worktree list'
