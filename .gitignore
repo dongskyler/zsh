@@ -3,6 +3,7 @@
 .zsh_history
 local-config.zsh
 *.local.zsh
+.zsh_sessions/
 
 
 # macOS

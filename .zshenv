@@ -5,7 +5,7 @@ export LANG=en_US.UTF-8
 GPG_TTY=$(tty)
 export GPG_TTY
 
-export EDITOR=nvim
+export EDITOR=vim
 
 export PAGER=less
 
@@ -34,6 +34,12 @@ fi
 export NVM_DIR="$HOME/.nvm"
 
 export MATLAB_DIR="$HOME/.matlab"
+
+export GO_DIR="${HOME}/.go"
+# export GO_ROOT_DIR="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GO_DIR}/bin:${GO_ROOT_DIR}/bin"
+test -d "${GO_DIR}" || mkdir "${GO_DIR}"
+test -d "${GO_DIR}/src/github.com" || mkdir -p "${GO_DIR}/src/github.com"
 
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings

@@ -5,27 +5,27 @@
 # Prompt order
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stamps section
-  user          # Username section
-  host          # Hostname section
+  # user          # Username section
+  # host          # Hostname section
   dir           # Current directory section
   git           # Git section (git_branch + git_status)
   # hg            # Mercurial section (hg_branch  + hg_status)
-  package       # Package version
-  node          # Node.js section
-  ruby          # Ruby section
+  # package       # Package version
+  # node          # Node.js section
+  # ruby          # Ruby section
   # elixir        # Elixir section
-  xcode         # Xcode section
-  swift         # Swift section
-  golang        # Go section
-  php           # PHP section
+  # xcode         # Xcode section
+  # swift         # Swift section
+  # golang        # Go section
+  # php           # PHP section
   # rust          # Rust section
-  haskell       # Haskell Stack section
+  # haskell       # Haskell Stack section
   # julia         # Julia section
   # aws           # Amazon Web Services section
   # gcloud        # Google Cloud Platform section
   # venv          # virtualenv section
   # conda         # conda virtualenv section
-  pyenv         # Pyenv section
+  # pyenv         # Pyenv section
   # dotnet        # .NET section
   # ember         # Ember.js section
   # kubectl       # Kubectl context section
@@ -50,10 +50,10 @@ SPACESHIP_PROMPT_DEFAULT_SUFFIX=") "
 
 # Directory
 SPACESHIP_DIR_SHOW="true"
-SPACESHIP_DIR_PREFIX="in("
-SPACESHIP_DIR_SUFFIX=") "
 SPACESHIP_DIR_TRUNC=5
 SPACESHIP_DIR_TRUNC_PREFIX="../"
+SPACESHIP_DIR_PREFIX="  in "
+SPACESHIP_DIR_SUFFIX=""
 SPACESHIP_DIR_TRUNC_REPO="true"
 SPACESHIP_DIR_COLOR="cyan"
 SPACESHIP_DIR_LOCK_SYMBOL=" !"
@@ -62,37 +62,37 @@ SPACESHIP_DIR_LOCK_COLOR="red"
 # Time
 SPACESHIP_TIME_SHOW="true"
 SPACESHIP_TIME_PREFIX=""
-SPACESHIP_TIME_SUFFIX=" "
+SPACESHIP_TIME_SUFFIX=""
 SPACESHIP_TIME_COLOR="blue"
 SPACESHIP_TIME_FORMAT="false"
 SPACESHIP_TIME_12HR="false"
 
 # Username
 SPACESHIP_USER_SHOW="always"
-SPACESHIP_USER_PREFIX="as("
-SPACESHIP_USER_SUFFIX=") "
+SPACESHIP_USER_PREFIX="  as "
+SPACESHIP_USER_SUFFIX=""
 SPACESHIP_USER_COLOR="yellow"
 SPACESHIP_USER_COLOR_ROOT="red"
 
 # Hostname
 SPACESHIP_HOST_SHOW="always"
 SPACESHIP_HOST_SHOW_FULL="false"
-SPACESHIP_HOST_PREFIX="@("
-SPACESHIP_HOST_SUFFIX=") "
+SPACESHIP_HOST_PREFIX="  @ "
+SPACESHIP_HOST_SUFFIX=""
 SPACESHIP_HOST_COLOR="white"
 SPACESHIP_HOST_COLOR_SSH="blue"
 
 # Execution time
 SPACESHIP_EXEC_TIME_SHOW="true"
-SPACESHIP_EXEC_TIME_PREFIX="took("
-SPACESHIP_EXEC_TIME_SUFFIX=") "
+SPACESHIP_EXEC_TIME_PREFIX="  took "
+SPACESHIP_EXEC_TIME_SUFFIX=""
 SPACESHIP_EXEC_TIME_COLOR="yellow"
 SPACESHIP_EXEC_TIME_ELAPSED=2
 
 # Battery
 SPACESHIP_BATTERY_SHOW="true"
-SPACESHIP_BATTERY_PREFIX="battery("
-SPACESHIP_BATTERY_SUFFIX=") "
+SPACESHIP_BATTERY_PREFIX="  bat "
+SPACESHIP_BATTERY_SUFFIX=""
 SPACESHIP_BATTERY_SYMBOL_CHARGING="+"
 SPACESHIP_BATTERY_SYMBOL_DISCHARGING="-"
 SPACESHIP_BATTERY_SYMBOL_FULL="."
@@ -103,9 +103,9 @@ SPACESHIP_VI_MODE_SHOW="true"
 
 # Jobs
 SPACESHIP_JOBS_SHOW="true"
-SPACESHIP_JOBS_PREFIX="J("
-SPACESHIP_JOBS_SUFFIX=") "
-SPACESHIP_JOBS_SYMBOL=""
+SPACESHIP_JOBS_PREFIX=""
+SPACESHIP_JOBS_SUFFIX=" "
+SPACESHIP_JOBS_SYMBOL="#"
 SPACESHIP_JOBS_COLOR="green"
 SPACESHIP_JOBS_AMOUNT_PREFIX=""
 SPACESHIP_JOBS_AMOUNT_SUFFIX=""
@@ -113,9 +113,9 @@ SPACESHIP_JOBS_AMOUNT_THRESHOLD=0
 
 # Exit code
 SPACESHIP_EXIT_CODE_SHOW="true"
-SPACESHIP_EXIT_CODE_PREFIX="E("
-SPACESHIP_EXIT_CODE_SUFFIX=") "
-SPACESHIP_EXIT_CODE_SYMBOL=""
+SPACESHIP_EXIT_CODE_PREFIX=""
+SPACESHIP_EXIT_CODE_SUFFIX=" "
+SPACESHIP_EXIT_CODE_SYMBOL="!"
 SPACESHIP_EXIT_CODE_COLOR="red"
 
 # Char
@@ -126,12 +126,12 @@ SPACESHIP_CHAR_SYMBOL_ROOT='$$'
 SPACESHIP_CHAR_SYMBOL_SECONDARY="$SPACESHIP_CHAR_SYMBOL"
 SPACESHIP_CHAR_COLOR_SUCCESS="green"
 SPACESHIP_CHAR_COLOR_FAILURE="red"
-SPACESHIP_CHAR_COLOR_SECONDARY="yellow"
+SPACESHIP_CHAR_COLOR_SECONDARY="blue"
 
 # Git
 SPACESHIP_GIT_SHOW="true"
-SPACESHIP_GIT_PREFIX="git("
-SPACESHIP_GIT_SUFFIX=") "
+SPACESHIP_GIT_PREFIX="  git "
+SPACESHIP_GIT_SUFFIX=""
 SPACESHIP_GIT_SYMBOL=""
 
 # Git branch
@@ -154,7 +154,7 @@ SPACESHIP_GIT_STATUS_STASHED="S"
 SPACESHIP_GIT_STATUS_UNMERGED="C"
 SPACESHIP_GIT_STATUS_AHEAD=">"
 SPACESHIP_GIT_STATUS_BEHIND="<"
-SPACESHIP_GIT_STATUS_DIVERGED="V"
+SPACESHIP_GIT_STATUS_DIVERGED="Y"
 
 # Package
 SPACESHIP_PACKAGE_SHOW="true"

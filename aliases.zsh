@@ -130,11 +130,13 @@ alias nx=nginx
 
 # P
 
-alias p=python
+alias p=pnpm
 
-alias pe=pyenv
-alias pea='pyenv activate'
-alias ped='pyenv deactivate'
+alias py=python
+
+alias pye=pyenv
+alias pyea='pyenv activate'
+alias pyed='pyenv deactivate'
 
 alias pi=pip
 alias pii='pip install'
@@ -150,7 +152,7 @@ alias poi='poetry install'
 alias pou='poetry update'
 alias pox='poetry export -f requirements.txt > requirements.txt'
 
-alias p3=python3
+alias py3=python3
 
 # R
 
@@ -181,14 +183,19 @@ alias udu='udisksctl unmount'
 # V
 
 assign_alias_v () {
-  if command -v nvim &> /dev/null; then
-    alias v=nvim
-    alias vi=nvim
-    print -P "%F{green}Info: %BNeovim%b is installed and mapped to aliases v and vi%f"
-  elif command -v vim &> /dev/null; then
+  # if command -v nvim &> /dev/null; then
+    # alias v=nvim
+    # alias vi=nvim
+    # print -P "%F{green}Info: %BNeovim%b is installed and mapped to aliases v and vi%f"
+  # elif command -v vim &> /dev/null; then
+  if command -v vim &> /dev/null; then
     alias v=vim
     alias vi=vim
     print -P "%F{green}Info: %BVim%b is installed and mapped to aliases v and vi%f"
+  elif command -v nvim &> /dev/null; then
+    alias v=nvim
+    alias vi=nvim
+    print -P "%F{green}Info: %BNeovim%b is installed and mapped to aliases v and vi%f"
   elif command -v vi &> /dev/null; then
     alias v=vi
     print -P "%F{yellow}Info: Either %BVim%b or %BNeovim%b is installed and mapped to aliases v and vi, but it is not clear which one is%f"
