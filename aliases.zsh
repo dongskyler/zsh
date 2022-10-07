@@ -183,19 +183,14 @@ alias udu='udisksctl unmount'
 # V
 
 assign_alias_v () {
-  # if command -v nvim &> /dev/null; then
-    # alias v=nvim
-    # alias vi=nvim
-    # print -P "%F{green}Info: %BNeovim%b is installed and mapped to aliases v and vi%f"
-  # elif command -v vim &> /dev/null; then
-  if command -v vim &> /dev/null; then
-    alias v=vim
-    alias vi=vim
-    print -P "%F{green}Info: %BVim%b is installed and mapped to aliases v and vi%f"
-  elif command -v nvim &> /dev/null; then
+  if command -v nvim &> /dev/null; then
     alias v=nvim
     alias vi=nvim
     print -P "%F{green}Info: %BNeovim%b is installed and mapped to aliases v and vi%f"
+  elif command -v vim &> /dev/null; then
+    alias v=vim
+    alias vi=vim
+    print -P "%F{green}Info: %BVim%b is installed and mapped to aliases v and vi%f"
   elif command -v vi &> /dev/null; then
     alias v=vi
     print -P "%F{yellow}Info: Either %BVim%b or %BNeovim%b is installed and mapped to aliases v and vi, but it is not clear which one is%f"
