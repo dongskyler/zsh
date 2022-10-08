@@ -5,6 +5,8 @@ export LANG=en_US.UTF-8
 GPG_TTY=$(tty)
 export GPG_TTY
 
+export LC_ALL='en_US.UTF-8'
+
 export EDITOR=nvim
 
 export PAGER=less
