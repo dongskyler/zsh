@@ -71,7 +71,6 @@ load_autojump && unset -f load_autojump
 set_zsh_plugins () {
   plugins=(
     git
-    vi-mode
     yarn
     zsh-syntax-highlighting
   )
