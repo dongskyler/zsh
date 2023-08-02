@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-ALIASES_FILE="$ZDOTDIR/aliases.zsh"
 ZSH="$ZDOTDIR/presets/oh-my-zsh"
 ZSH_THEME="spaceship"
 THEME_CONFIG="$ZDOTDIR/spaceship-config.zsh"
@@ -159,14 +158,6 @@ init_pyenv () {
 
 init_pyenv && unset -f init_pyenv
 
-load_aliases() {
-  if [[ -f "$ALIASES_FILE" ]]; then
-    . "$ALIASES_FILE"
-  fi
-}
-
-load_aliases && unset -f load_aliases
-
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
 
@@ -185,3 +176,9 @@ load_local_zshrc && unset -f load_local_zshrc
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/Users/bytedance/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm endexport PATH=/Users/bytedance/.local/bin:$PATH

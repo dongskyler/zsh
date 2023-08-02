@@ -16,6 +16,16 @@ export ZDOTDIR="$HOME/.zsh"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
+export ALIASES_FILE="$ZDOTDIR/aliases.zsh"
+
+load_aliases() {
+  if [[ -f "$ALIASES_FILE" ]]; then
+    . "$ALIASES_FILE"
+  fi
+}
+
+load_aliases && unset -f load_aliases
+
 export PYENV_ROOT="$HOME/.pyenv"
 
 if [[ -d "$PYENV_ROOT" ]]; then
@@ -34,6 +44,11 @@ if [[ -d "$HOME/.node_modules" ]]; then
 fi
 
 export NVM_DIR="$HOME/.nvm"
+
+if type rg &> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
 
 export MATLAB_DIR="$HOME/.matlab"
 

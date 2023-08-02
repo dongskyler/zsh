@@ -130,10 +130,7 @@ alias nx=nginx
 
 # P
 
-alias p=pnpm
-
-alias py=python
-
+alias pn=pnpm
 alias pye=pyenv
 alias pyea='pyenv activate'
 alias pyed='pyenv deactivate'
@@ -152,6 +149,7 @@ alias poi='poetry install'
 alias pou='poetry update'
 alias pox='poetry export -f requirements.txt > requirements.txt'
 
+alias py=python
 alias py3=python3
 
 # R
