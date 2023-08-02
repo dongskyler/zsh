@@ -182,3 +182,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PNPM_HOME="/Users/bytedance/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm endexport PATH=/Users/bytedance/.local/bin:$PATH
+# export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles

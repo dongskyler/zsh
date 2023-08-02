@@ -26,6 +26,9 @@ load_aliases() {
 
 load_aliases && unset -f load_aliases
 
+export DOCKER_DIR="$HOME/.docker"
+export PATH="$DOCKER_DIR/bin:$PATH"
+
 export PYENV_ROOT="$HOME/.pyenv"
 
 if [[ -d "$PYENV_ROOT" ]]; then
@@ -54,9 +57,12 @@ export MATLAB_DIR="$HOME/.matlab"
 
 export GO_DIR="${HOME}/.go"
 # export GO_ROOT_DIR="$(brew --prefix golang)/libexec"
+
 export PATH="$PATH:${GO_DIR}/bin:${GO_ROOT_DIR}/bin"
 test -d "${GO_DIR}" || mkdir "${GO_DIR}"
 test -d "${GO_DIR}/src/github.com" || mkdir -p "${GO_DIR}/src/github.com"
+
+eval $(/opt/homebrew/bin/brew shellenv)
 
 # ----------------------------------------------------------------------
 # Load local configuration file, if present, to override default settings
